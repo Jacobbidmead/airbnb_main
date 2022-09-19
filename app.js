@@ -49,7 +49,12 @@ require('./express-sessions')(app)
 // ::::
 // Create your routes here
 // ::::
-app.use('/', require('./controllers/search.js'))
+app.use('/', require('./controllers/index.js'))
+app.get('/auth', (req, res) => {})
+app.get('/booking', (req, res) => {})
+app.get('/house', (req, res) => {})
+app.get('/profile', (req, res) => {})
+app.get('/reviews', (req, res) => {})
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
