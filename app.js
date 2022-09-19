@@ -50,7 +50,7 @@ require('./express-sessions')(app)
 // Create your routes here
 // ::::
 app.use('/', require('./controllers/index.js'))
-app.get('/auth', (req, res) => {})
+app.get('/auth', require(./controllers) => {})
 app.get('/booking', (req, res) => {})
 app.get('/house', (req, res) => {})
 app.get('/profile', (req, res) => {})
