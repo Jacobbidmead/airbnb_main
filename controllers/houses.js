@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('../views')
+  res.render('../views/houses/houses-main')
 })
 
 router.get('/create', (req, res) => {
-  res.render('../views')
+  res.render('../views/houses/create')
 })
 
 router.get('/:id', (req, res) => {
@@ -18,7 +18,8 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  res.render('../views')
+  // res.render('../views/houses/houses-main')
+  res.render('/')
 })
 
 router.patch('/:id', (req, res) => {
