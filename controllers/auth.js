@@ -10,11 +10,28 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signup', async (req, res) => {
-  const foundUser = await Users.create(req.body)
-  req.login(foundUser, error => {
+router.post('/signup', async (req, res, next) => {
+  try {
+    let foundUsers = await Users.countDocuments({
+      email: req.body.email
+    })
+
+    // countDocuments gives the number of users that match the condtion
+    // if that number is more than 0 then function stops
+
+    if (foundUsers > 0) {
+      throw new Error('User with this email already exists')
+    }
+    // foundUser is returning an array
+  } catch (err) {
+    next(err)
+  }
+
+  const createdUser = await Users.create(req.body)
+  req.login(createdUser, error => {
     if (error) {
-      // something
+      next(error)
+      // use error parameter as it contains information about error
     } else {
       res.redirect('/houses')
     }
