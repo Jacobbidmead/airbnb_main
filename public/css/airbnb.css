@@ -17,7 +17,7 @@
 }
 
 .logo {
-  width: 20%;
+  width: 30%;
 }
 
 .logo-create {
@@ -30,7 +30,7 @@
 
 .login {
   height: 100vh;
-  background-image: url(images/thailand.jpg);
+  background-image: url(/images/thailand.jpg);
   background-size: cover;
 }
 

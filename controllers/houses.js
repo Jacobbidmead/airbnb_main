@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
   res.render('houses/one')
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id/edit', (req, res) => {
   res.render('houses/edit')
 })
 
