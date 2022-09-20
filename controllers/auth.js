@@ -9,8 +9,9 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/', (req, res) => {
-  res.render()
+router.post('/signup', (req, res) => {
+  res.send()
+  console.log('works')
 })
 
 router.get('/logout', (req, res) => {
