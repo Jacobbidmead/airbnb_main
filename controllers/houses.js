@@ -2,32 +2,31 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('../views/houses/houses-main')
+  res.render('houses/list')
 })
 
 router.get('/create', (req, res) => {
-  res.render('../views/houses/create')
+  res.render('houses/create')
 })
 
 router.get('/:id', (req, res) => {
-  res.render('../views')
+  res.render('houses/one')
 })
 
-router.get('/:id/edit', (req, res) => {
-  res.render('../views')
+router.get('/:id', (req, res) => {
+  res.render('houses/edit')
 })
 
 router.post('/', (req, res) => {
-  // res.render('../views/houses/houses-main')
-  res.render('/')
+  res.render('houses/list')
 })
 
 router.patch('/:id', (req, res) => {
-  res.render('../views')
+  res.render('houses/one')
 })
 
 router.delete('/:id', (req, res) => {
-  res.render('../views')
+  res.render('houses/one')
 })
 
 module.exports = router

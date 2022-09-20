@@ -2,23 +2,19 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/login', (req, res) => {
-  res.render('/')
+  res.render('login')
 })
 
 router.get('/signup', (req, res) => {
-  res.render('/')
+  res.render('signup')
 })
 
-router.post('/login', (req, res) => {
-  res.render('/')
-})
-
-router.post('/login', (req, res) => {
-  res.render('/')
+router.post('/', (req, res) => {
+  res.render()
 })
 
 router.get('/logout', (req, res) => {
-  res.render('/')
+  res.render()
 })
 
 module.exports = router
