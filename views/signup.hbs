@@ -15,12 +15,14 @@
 						<form action="/auth/signup" method="post">
 							<div><span>Your Full Name</span></div>
 							<div class="input-group mb-3">
-								<input type="text" class="form-control" />
+								<input name="name" type="text" class="form-control" />
 							</div>
 							<div><span>Profile Picture</span></div>
 							<div class="input-group mb-3">
 								<input
-									type="text"
+								name="avatar"
+
+								type="text"
 									class="form-control"
 									placeholder="http://..."
 								/>
@@ -28,11 +30,11 @@
 
 							<div><span>Email</span></div>
 							<div class="input-group mb-3">
-								<input name="Email" type="text" class="form-control" />
+								<input name="email" type="text" class="form-control" />
 							</div>
 							<div><span>Password</span></div>
 							<div class="input-group mb-3">
-								<input name="Password" type="text" class="form-control" />
+								<input name="password" type="text" class="form-control" />
 							</div>
 							<div>
 								<button class="btn btn-success my-3">

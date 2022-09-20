@@ -10,7 +10,7 @@ module.exports = mongoose.model('users', {
     type: String,
     required: true
   },
-  Password: {
+  password: {
     type: String,
     required: true
   }
