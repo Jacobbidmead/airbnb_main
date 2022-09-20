@@ -10,9 +10,15 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signup', (req, res) => {
-  Users.create(req.body)
-  console.log(req.body)
+router.post('/signup', async (req, res) => {
+  const foundUser = await Users.create(req.body)
+  req.login(foundUser, error => {
+    if (error) {
+      // something
+    } else {
+      res.redirect('/houses')
+    }
+  })
 })
 
 router.get('/logout', (req, res) => {
