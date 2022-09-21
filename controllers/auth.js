@@ -6,6 +6,32 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
+router.post('/login', async (req, res, next) => {
+  let findUser = await Users.findOne({
+    email: req.body.email,
+    password: req.body.password
+  })
+  // if foundUseruser is found the stop the function
+  try {
+    if (!findUser) {
+      throw new Error('Email or Password invalid')
+    } else {
+      req.login(findUser, error => {
+        if (error) {
+          throw new Error(error)
+          // use error parameter as it contains information about error
+        } else {
+          res.redirect('/houses')
+        }
+      })
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+// log in that user above
+
 router.get('/signup', (req, res) => {
   res.render('signup')
 })
