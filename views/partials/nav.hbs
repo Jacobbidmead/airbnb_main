@@ -6,6 +6,7 @@
 				<img src="/images/logo-airbnb.png" alt="airbnb logo" class="logo" />
 			</a>
 			<div class="col text-end">
+				{{#if loggedUser}}
 				<a href="" type="button" class="btn btn-outline-secondary">
 					<img
 						src="{{loggedUser.avatar}}"
@@ -17,6 +18,11 @@
 				<a href="/auth/logout" type="button" class="btn btn-outline-secondary">
 					Log out
 				</a>
+				{{else}}
+				<a href="/auth/logout" type="button" class="btn btn-outline-secondary">
+					Log in
+				</a>
+				{{/if}}
 			</div>
 		</div>
 	</div>
