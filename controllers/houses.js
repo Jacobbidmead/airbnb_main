@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.render('houses/list')
+  let loggedUser = req.user
+  res.render('houses/list', { loggedUser })
 })
 
 router.get('/create', (req, res) => {
