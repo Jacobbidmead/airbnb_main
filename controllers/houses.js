@@ -2,9 +2,15 @@ const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses.js')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res, next) => {
+  let eachHouse = await Houses.find({})
+  // finds all houses data
+  // find returns array
+
   let loggedUser = req.user
-  res.render('houses/list', { loggedUser })
+  // req.user is the user that is logged in and data inside can be accessed via . notation e.g req.user.name. this can then be logged a variable and added to hbs code and {{}}
+  res.render('houses/list', { loggedUser, eachHouse })
+  // pass eachhouse as object
 })
 
 router.get('/create', (req, res) => {
