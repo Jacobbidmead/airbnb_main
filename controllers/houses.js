@@ -15,10 +15,20 @@ router.get('/create', (req, res) => {
   res.render('houses/create', { loggedUser })
 })
 
-router.get('/:id', (req, res) => {
-  let loggedUser = req.user
-  res.render('houses/one', { loggedUser })
+// one house
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    let house = await Houses.findById(req.params.id).populate('host')
+
+    let loggedUser = req.user
+    res.render('houses/one', { loggedUser: req.user, house })
+  } catch (error) {
+    next(error)
+  }
 })
+
+// end
 
 router.get('/:id/edit', (req, res) => {
   if (!req.isAuthenticated()) {
