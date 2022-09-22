@@ -21,6 +21,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     let house = await Houses.findById(req.params.id).populate('host')
     // find houses by id. params gets the vaule from the route ('/:id') then populates 'host' data which has been imported into houses db
+    // house object
     let loggedUser = req.user
     res.render('houses/one', { loggedUser, house })
   } catch (error) {
