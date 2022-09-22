@@ -15,15 +15,26 @@ router.get('/', async (req, res, next) => {
     delete filters.rooms
   }
 
-  delete filters.price
+  // Houses.find({
+  //   price: {
+  //     $gte: 100
+  //   }
+  // })
+
   delete filters.lowToHigh
-  delete filters.houseName
 
   console.log(req.query)
 
   // finds all houses data
   // find returns array
-  let eachHouse = await Houses.find(filters)
+  let eachHouse = await Houses.find({
+    title: {
+      $regex: filters.houseName ? filters.houseName : '',
+      $options: 'i'
+    },
+    // if the price is less that the largest filters price, show houses, if not the max price is really high so will show all the houses
+    price: { $lt: filters.price ? filters.price : 9999999999 }
+  })
 
   // req.user is the user that is logged in and data inside can be accessed via . notation e.g req.user.name. this can then be logged a variable and added to hbs code and {{}}
   let loggedUser = req.user
