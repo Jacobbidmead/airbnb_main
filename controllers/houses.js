@@ -3,14 +3,32 @@ const router = express.Router()
 const Houses = require('../models/houses.js')
 
 router.get('/', async (req, res, next) => {
-  let eachHouse = await Houses.find({})
+  // set req.query to a variale
+  let filters = req.query
+
+  // with if statement remove what i dont need
+  if (filters.location == 'Any Location') {
+    delete filters.location
+  }
+
+  if (filters.rooms == 'Any Rooms') {
+    delete filters.rooms
+  }
+
+  delete filters.price
+  delete filters.lowToHigh
+  delete filters.houseName
+
+  console.log(req.query)
+
   // finds all houses data
   // find returns array
+  let eachHouse = await Houses.find(filters)
 
-  let loggedUser = req.user
   // req.user is the user that is logged in and data inside can be accessed via . notation e.g req.user.name. this can then be logged a variable and added to hbs code and {{}}
-  res.render('houses/list', { loggedUser, eachHouse })
+  let loggedUser = req.user
   // pass eachhouse as object
+  res.render('houses/list', { loggedUser, eachHouse })
 })
 
 router.get('/create', (req, res) => {

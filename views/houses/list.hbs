@@ -3,7 +3,7 @@
         {{> nav loggedUser = loggedUser}}
     <!-- filters-->
     <div class="bg-light p-3">
-      <form>
+      <form method="get" action="/houses">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -14,9 +14,9 @@
                 <select name="location" class="form-select">
                   5
                   <option selected>Any Location</option>
-                  <option value="1">Koh Phangan</option>
-                  <option value="2">Koh Samui</option>
-                  <option value="3">Bali</option>
+                  <option>Koh Phangan</option>
+                  <option>Koh Samui</option>
+                  <option>Bali</option>
                 </select>
               </div>
             </div>
@@ -31,9 +31,9 @@
                   <option value="1">1 room</option>
                   <option value="2">2 rooms</option>
                   <option value="3">3 rooms</option>
-                  <option value="1">4 rooms</option>
-                  <option value="2">5 rooms</option>
-                  <option value="3">6 rooms</option>
+                  <option value="4">4 rooms</option>
+                  <option value="5">5 rooms</option>
+                  <option value="6">6 rooms</option>
                 </select>
               </div>
             </div>
@@ -56,7 +56,7 @@
                 <label class="input-group-text">
                   <i class="fa-solid fa-sort"></i
                 ></label>
-                <select name="low-to-high" class="form-select">
+                <select name="lowToHigh" class="form-select">
                   <option selected>Price (low to high)</option>
                   <option value="1">Price (high to low)</option>
                 </select>
@@ -65,7 +65,7 @@
 
             <div class="col">
               <input
-                name="house-name"
+                name="houseName"
                 class="form-control"
                 placeholder="House name..."
               />
@@ -84,7 +84,7 @@
     <!-- house -->
     <div class="container py-4">
       <div class="row row-cols-4">
-				{{#each eachHouse as |house2|}}
+				{{#each eachHouse as |house|}}
         <div class="col p-3">
           <div class="card">
             <img
