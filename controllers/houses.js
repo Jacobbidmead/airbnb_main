@@ -20,9 +20,9 @@ router.get('/create', (req, res) => {
 router.get('/:id', async (req, res, next) => {
   try {
     let house = await Houses.findById(req.params.id).populate('host')
-
+    // find houses by id. params gets the vaule from the route ('/:id') then populates 'host' data which has been imported into houses db
     let loggedUser = req.user
-    res.render('houses/one', { loggedUser: req.user, house })
+    res.render('houses/one', { loggedUser, house })
   } catch (error) {
     next(error)
   }
@@ -47,14 +47,17 @@ router.post('/', async (req, res, next) => {
   }
 
   // filling the houses data
+  req.body.host = req.user._id
+  // adds the users object to the houses object via the user id, which can be accessed later
+  const createdHouse = await Houses.create(req.body)
 
-  const createdHouses = await Houses.create(req.body)
-  req.login(createdHouses, error => {
+  req.login(createdHouse, error => {
     if (error) {
       next(error)
       // use error parameter as it contains information about error
     } else {
-      res.redirect('/houses/one')
+      res.redirect(`/houses/${createdHouse._id}`)
+      // replaces /createdhouses._id with actual id data from db.
     }
   })
 })
