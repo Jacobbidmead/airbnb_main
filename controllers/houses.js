@@ -16,12 +16,14 @@ router.get('/create', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  res.render('houses/one')
+  let loggedUser = req.user
+  res.render('houses/one', { loggedUser })
 })
 
 router.get('/:id/edit', (req, res) => {
   if (!req.isAuthenticated()) {
-    res.redirect('/auth/login')
+    let loggedUser = req.user
+    res.redirect('/auth/login', { loggedUser })
   }
 
   res.render('houses/edit')
