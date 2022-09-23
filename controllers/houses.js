@@ -3,7 +3,7 @@ const router = express.Router()
 const Houses = require('../models/houses.js')
 
 router.get('/', async (req, res, next) => {
-  // set req.query to a variale
+  // set req.query to a variable
   let filters = req.query
 
   // with if statement remove what i dont need
