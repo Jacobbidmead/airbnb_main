@@ -15,12 +15,11 @@ router.get('/', async (req, res, next) => {
     delete filters.rooms
   }
 
-  console.log(req.query)
-
   // finds all houses data
   // find returns array
   let eachHouse = await Houses.find({
     title: {
+      // if the search find and character from the housename, return or an empty string, this stops the programme crashing
       $regex: filters.houseName ? filters.houseName : '',
       $options: 'i'
     },
@@ -85,7 +84,7 @@ router.post('/', async (req, res, next) => {
       // use error parameter as it contains information about error
     } else {
       res.redirect(`/houses/${createdHouse._id}`)
-      // replaces /createdhouses._id with actual id data from db.
+      // creates a route, when the user logs in, thier id will come after /houses and shwo their logged in houses page. /createdhouses._id is replaced with actual id data from db.
     }
   })
 })

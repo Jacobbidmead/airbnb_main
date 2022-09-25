@@ -54,12 +54,15 @@ router.post('/signup', async (req, res, next) => {
   }
 
   const createdUser = await Users.create(req.body)
+  // create a user (user data in db) from the information passed to the form
   req.login(createdUser, error => {
+    // req,login = log in that user who has been created, then check for errors
     if (error) {
       next(error)
       // use error parameter as it contains information about error
     } else {
       res.redirect('/houses')
+      // if not error, redirct to houses page
     }
   })
 })
