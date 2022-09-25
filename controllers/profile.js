@@ -30,7 +30,7 @@ router.patch('/', async (req, res) => {
     { new: true }
   )
 
-  // then renders the profile page
+  // then renders the profile page and logs in the returning user and thier updated data
   req.login(returningUser, error => {
     if (error) {
       throw new Error(error)

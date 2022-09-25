@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses.js')
-
+// these are the search bar search requests
 router.get('/', async (req, res, next) => {
   // set req.query to a variable
   let filters = req.query
@@ -26,6 +26,7 @@ router.get('/', async (req, res, next) => {
     // if the price is less that the largest filters price, show those houses, if not the max price is really high so will show all the houses
     price: { $lte: filters.price ? filters.price : 9999999999 }
   }).sort(filters.priceSort)
+  // sort filters priceSort is prices low to high/high to low input
 
   // req.user is the user that is logged in and data inside can be accessed via . notation e.g req.user.name. this can then be logged a variable and added to hbs code and {{}}
   let loggedUser = req.user
